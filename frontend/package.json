@@ -5,6 +5,7 @@
   "scripts": {
     "test": "gulp test"
   },
+    "author": "Devon Hogencamp",
   "devDependencies": {
     "estraverse": "~4.1.0",
     "gulp": "~3.9.0",
