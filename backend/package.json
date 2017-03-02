@@ -1,0 +1,14 @@
+{
+  "name": "meanapp",
+  "version": "1.0.0",
+  "description": "A slack message copycat",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Devon Hogencamp",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.0"
+  }
+}
