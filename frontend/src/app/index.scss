@@ -3,7 +3,8 @@
  *  The list of variables are listed here bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
  */
 $navbar-inverse-link-color: #5AADBB;
-$icon-font-path: "../../bootstrap-sass/assets/fonts/bootstrap/";
+// 3-3-17 - DJH Changed front path to fix the glyphicon not found bug
+$icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 
 /**
  *  Do not remove the comments below. It's the markers used by wiredep to inject
