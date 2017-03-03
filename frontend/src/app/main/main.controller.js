@@ -4,15 +4,19 @@
     main.controller.js
 
     Purpose: Controller for main.html page
+
+    3-3-17: Put in $http so we can send POST messages
 */
 
 export class MainController {
-    constructor ($log) {
+    constructor ($http) {
         'ngInject';
-        this.$log = $log;
+        this.$http = $http;
     }
 
     postMessage() {
-        this.$log.log('post');
+        this.$http.post('http://localhost:8080/api/message', {
+            msg: 'hi!'
+        });
     }
 }

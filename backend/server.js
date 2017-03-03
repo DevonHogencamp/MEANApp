@@ -6,6 +6,8 @@
     Made a express server the uses port 8080 and has a route handler to POSt /api/message
 
     2-3-17: Added body parser to handle our req/res
+
+    2-3-17: Take care of CORES errors
 */
 var express = require('express');
 
@@ -16,6 +18,12 @@ var bodyParser = require('body-parser');
 var port = 8080;
 
 app.use(bodyParser.json());
+
+app.use(function (req, res, next) {
+    res.header("Access_Control-Allow_Origin", "*");
+    res.header("Access_Control-Allow_Headers", "Content-Type,Authorization");
+    next();
+});
 
 app.post('/api/message', function (req, res) {
     console.log(req.body);
