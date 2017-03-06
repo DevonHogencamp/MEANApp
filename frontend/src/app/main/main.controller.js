@@ -14,9 +14,9 @@ export class MainController {
         this.$http = $http;
     }
 
-    postMessage() {
+    postMessage(msg) {
         this.$http.post('http://localhost:8080/api/message', {
-            msg: 'hi!'
+            msg: this.msg
         });
     }
 }
