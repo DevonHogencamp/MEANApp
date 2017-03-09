@@ -21,10 +21,8 @@ var mongoose = require('mongoose');
 
 var port = 8080;
 
-var database;
-
-var Message = mongoose.model({
-    msg: String
+var Message = mongoose.model('Message', {
+    message: String
 });
 
 app.use(bodyParser.json());
@@ -37,26 +35,28 @@ app.use(function (req, res, next) {
 
 app.post('/api/message', function (req, res) {
     console.log(req.body);
-    // database.collection('msgs').insertOne(req.body);
-    var msg = new Message(req.body);
 
-    msg.save();
+    var message = new Message(req.body);
+
+    message.save();
 
     res.status(200);
 });
 
-var mongoDB = 'mongodb://localhost:27017/test';
-mongoose.connect(mongoDB);
+// Added way to retrieve messages from mongodb
+app.get('/api/message', getMessages);
 
-var database = mongoose.connection;
+function getMessages(req, res) {
+    Message.find({}).exec(function (err, result) {
+        res.send(result);
+    });
+}
 
-// mongo.connect('mongodb://localhost:27017/test', function (err, db) {
-//     if (!err) {
-//         console.log('Connected to MongoDB');
-//
-//         database = db;
-//     }
-// });
+mongoose.connect('mongodb://localhost:27017/test', function (err, db) {
+    if (!err) {
+        console.log('Connected to MongoDB');
+    }
+});
 
 var server = app.listen(port, function () {
     console.log('Server listening on localhost:' + port);
