@@ -22,7 +22,7 @@ var mongoose = require('mongoose');
 var port = 8080;
 
 var Message = mongoose.model('Message', {
-    message: String
+    msg: String
 });
 
 app.use(bodyParser.json());
