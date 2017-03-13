@@ -16,6 +16,9 @@ import {
   AuthController
 } from './auth/auth.controller';
 import {
+  CompareToDirective
+} from './directives/compareToDirective';
+import {
   GithubContributorService
 } from '../app/components/githubContributor/githubContributor.service';
 import {
@@ -39,4 +42,5 @@ angular.module('myMessageFront', ['ui.router', 'ui.bootstrap', 'toastr'])
   .controller('MainController', MainController)
   .controller('AuthController', AuthController)
   .directive('acmeNavbar', NavbarDirective)
-  .directive('acmeMalarkey', MalarkeyDirective);
+  .directive('acmeMalarkey', MalarkeyDirective)
+    .directive('compareTo', CompareToDirective);
