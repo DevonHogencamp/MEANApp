@@ -43,6 +43,10 @@ app.post('/api/message', function (req, res) {
     res.status(200);
 });
 
+app.post('/auth/register', function (req, res) {
+    console.log(req.body);
+});
+
 // Added way to retrieve messages from mongodb
 app.get('/api/message', getMessages);
 
