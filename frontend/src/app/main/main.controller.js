@@ -23,7 +23,7 @@ export class MainController {
         });
     }
 
-    postMessage(msg) {
+    postMessage() {
         this.$http.post('http://localhost:8080/api/message', {
             msg: this.msg
         });
