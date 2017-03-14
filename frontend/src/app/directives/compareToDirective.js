@@ -1,7 +1,7 @@
 export function CompareToDirective($parse) {
     'ngInject';
     return {
-        require: 'mgModel',
+        require: 'ngModel',
         link: function (scope, elm, attrs, ngModel) {
             var mainModel = $parse(attrs.compareTo);
 
