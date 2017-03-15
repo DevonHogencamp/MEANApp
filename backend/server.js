@@ -19,11 +19,13 @@ var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
 
-var port = 8080;
+var User = require('./models/User');
 
-var Message = mongoose.model('Message', {
-    msg: String
-});
+var auth = require('./controllers/auth');
+
+var message = require('./controllers/message');
+
+var port = 8080;
 
 app.use(bodyParser.json());
 
@@ -33,28 +35,11 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.post('/api/message', function (req, res) {
-    console.log(req.body);
+app.get('/api/message', message.get);
 
-    var message = new Message(req.body);
+app.post('/api/message', message.post);
 
-    message.save();
-
-    res.status(200);
-});
-
-app.post('/auth/register', function (req, res) {
-    console.log(req.body);
-});
-
-// Added way to retrieve messages from mongodb
-app.get('/api/message', getMessages);
-
-function getMessages(req, res) {
-    Message.find({}).exec(function (err, result) {
-        res.send(result);
-    });
-}
+app.post('/auth/register', auth.register);
 
 mongoose.connect('mongodb://localhost:27017/test', function (err, db) {
     if (!err) {
