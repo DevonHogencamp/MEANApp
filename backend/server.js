@@ -35,6 +35,15 @@ app.use(function (req, res, next) {
     next();
 });
 
+// Middleware - check user is authenticated
+function checkAuthenticated(req, res, next) {
+    if (!req.headers('Authorization')) {
+        return res.status(401).send({
+            message: 'Please make sure your req has and authorization header'
+        });
+    }
+}
+
 app.get('/api/message', message.get);
 
 app.post('/api/message', message.post);

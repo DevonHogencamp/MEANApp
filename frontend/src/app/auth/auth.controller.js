@@ -5,9 +5,10 @@ export class AuthController {
     }
 
     register() {
-        this.$auth.signup({
-            email: this.user.email,
-            pwd: this.user.pwd
+        var vm = this;
+
+        this.$auth.signup(this.user).then(function (token) {
+            vm.$auth.setToken(token);
         });
     }
 }
