@@ -23,4 +23,4 @@ module.exports = function checkAuthenticated(req, res, next) {
     req.user = payload.sub;
 
     next();
-}
+};

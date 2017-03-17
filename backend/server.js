@@ -19,24 +19,19 @@ var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
 
-var User = require('./models/User');
-
 var auth = require('./controllers/auth');
 
 var message = require('./controllers/message');
 
 var checkAuthenticated = require('./services/checkAuthenticated');
 
+var cores = require('./services/cores');
+
 var port = 8080;
 
 app.use(bodyParser.json());
 
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
-    next();
-});
-
+app.use(cores);
 
 app.get('/api/message', message.get);
 
