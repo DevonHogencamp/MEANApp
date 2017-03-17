@@ -25,6 +25,8 @@ var auth = require('./controllers/auth');
 
 var message = require('./controllers/message');
 
+var checkAuthenticated = require('./services/checkAuthenticated');
+
 var port = 8080;
 
 app.use(bodyParser.json());
@@ -35,18 +37,10 @@ app.use(function (req, res, next) {
     next();
 });
 
-// Middleware - check user is authenticated
-function checkAuthenticated(req, res, next) {
-    if (!req.headers('Authorization')) {
-        return res.status(401).send({
-            message: 'Please make sure your req has and authorization header'
-        });
-    }
-}
 
 app.get('/api/message', message.get);
 
-app.post('/api/message', message.post);
+app.post('/api/message', checkAuthenticated, message.post);
 
 app.post('/auth/register', auth.register);
 
