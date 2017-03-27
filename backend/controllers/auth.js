@@ -36,7 +36,7 @@ module.exports = {
         }, function (err, user) {
             if (!user) {
                 return res.status(401).send({
-                    message: "Email or password invalid!"
+                    message: "Email Invalid!"
                 });
             }
 
@@ -45,6 +45,12 @@ module.exports = {
 
                 res.send({
                     token:createToken(user)
+                });
+            }
+
+            else {
+                return res.status(401).send({
+                    message: "Password Invalid!"
                 });
             }
         });
