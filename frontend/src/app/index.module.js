@@ -16,6 +16,9 @@ import {
   AuthController
 } from './auth/auth.controller';
 import {
+  NavbarController
+} from './components/navbar/navbar.controller';
+import {
   CompareToDirective
 } from './directives/compareToDirective';
 import {
@@ -42,6 +45,7 @@ angular.module('myMessageFront', ['ui.router', 'ui.bootstrap', 'toastr', 'satell
     .service('webDevTec', WebDevTecService)
     .controller('MainController', MainController)
     .controller('AuthController', AuthController)
+    .controller('NavbarController', NavbarController)
     .directive('acmeNavbar', NavbarDirective)
     .directive('acmeMalarkey', MalarkeyDirective)
     .directive('compareTo', CompareToDirective);
